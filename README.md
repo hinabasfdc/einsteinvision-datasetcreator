@@ -10,4 +10,4 @@ Einstein Vision で ImageClassification のモデル作成に使用する学習�
 - JSZip(jszip.min.js)
 - FileSaver(FileSaver.min.zip)
 
-開発時に使ったバージョンのライブラリをまとめた Zip ファイルはレポジトリに登録してあります。
+開発時に使ったバージョンのライブラリをまとめた Zip ファイルはレポジトリに登録してありますのでご活用ください。
