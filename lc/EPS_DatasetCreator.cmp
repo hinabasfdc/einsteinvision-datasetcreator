@@ -1,0 +1,54 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes" access="global" >
+    <aura:attribute name="pageTitle" type="String" default=" ラベル決めて入力し、画像ファイルを選びましょう"/>
+    <aura:attribute name="thumnailimagesize" type="Integer" default="64"/>
+    <aura:attribute name="fullimagesize" type="Integer" default="448"/>
+    
+    <aura:attribute name="objImagesfiles1" type="Object[]"/>
+    <aura:attribute name="objImagesfiles2" type="Object[]"/>
+    <aura:attribute name="objImagesfiles3" type="Object[]"/>
+    
+    <aura:attribute name="numOffiles1" type="Integer" default="0"/>
+    <aura:attribute name="numOffiles2" type="Integer" default="0"/>
+    <aura:attribute name="numOffiles3" type="Integer" default="0"/>
+    
+    <ltng:require scripts="{!join(',',$Resource.EPSDatasetCreatorLibs + '/jszip.min.js',$Resource.EPSDatasetCreatorLibs + '/FileSaver.min.js')}" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <lightning:card title="{!v.pageTitle}" iconName="action:follow">
+        <aura:set attribute="actions">
+            <lightning:button label="ZIP ファイルの作成" title="ZIP ファイルの作成" onclick="{!c.handleCreateZipFile}"/>
+        </aura:set>
+        <div>
+            <lightning:layout horizontalAlign="space">
+                <lightning:layoutItem class="slds-p-around_small eps-dsc-div3">
+                    <lightning:input aura:id="label1" name="label1" label="ラベル1" />
+                    <lightning:input name="files1" type="file" label="{!'画像ファイルを選択 (' + v.numOffiles1 + ')'}" multiple="true" accept="image/jpg,png" onchange='{!c.handleFilesChange}' />
+                    <div id="files1listview" class="slds-m-top_small">
+                        <aura:iteration items="{!v.objImagesfiles1}" var="item">
+                            <img src="{!item.thumnail}"></img>
+                        </aura:iteration>
+                    </div>
+                </lightning:layoutItem>
+                <lightning:layoutItem class="slds-p-around_small eps-dsc-div3">
+                    <lightning:input aura:id="label2" name="label2" label="ラベル2" />
+                    <lightning:input name="files2" type="file" label="{!'画像ファイルを選択 (' + v.numOffiles2 + ')'}" multiple="true" accept="image/jpg,png" onchange='{!c.handleFilesChange}'/>
+                    <div id="files2listview" class="slds-m-top_small">
+                        <aura:iteration items="{!v.objImagesfiles2}" var="item">
+                            <img src="{!item.thumnail}"></img>
+                        </aura:iteration>
+                    </div>
+                </lightning:layoutItem>
+                <lightning:layoutItem class="slds-p-around_small eps-dsc-div3">
+                    <lightning:input aura:id="label3" name="label3" label="ラベル3" />
+                    <lightning:input name="files3" type="file" label="{!'画像ファイルを選択 (' + v.numOffiles3 + ')'}" multiple="true" accept="image/jpg,png" onchange='{!c.handleFilesChange}'/>
+                    <div id="files3listview" class="slds-m-top_small">
+                        <aura:iteration items="{!v.objImagesfiles3}" var="item">
+                            <img src="{!item.thumnail}"></img>
+                        </aura:iteration>
+                    </div>
+                </lightning:layoutItem>
+            </lightning:layout>
+        </div>
+    </lightning:card>
+</aura:component>
