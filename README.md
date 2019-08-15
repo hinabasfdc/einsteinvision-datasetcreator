@@ -1,4 +1,4 @@
-# einsteinvision-datasetcreator
+# Einstein Vision - データセット作成支援ツール
 Einstein Vision で ImageClassification のモデル作成に使用する学習用の画像データを集めた Zip ファイルの生成支援 Aura Component のソースです。
 
 ![スクリーンショット](https://github.com/hinabasfdc/einsteinvision-datasetcreator/blob/master/EPS_DatasetCreator_ScreenShot.jpg)
